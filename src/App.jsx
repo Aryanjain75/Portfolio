@@ -8,14 +8,14 @@ import { motion } from "framer-motion";
 import HeroSection from "./Component/HeroSection";
 import { Timeline } from "./Component/TimeLine";
 import Skillset from "./Component/Skillset";
-import { PinContainer } from "./Component/Pincard";
+import { Canvas } from "@react-three/fiber";
 import { useRef, useEffect, useState} from "react";
 import  ContactUs  from "./Component/ContactUs";
-import { Sun, Moon } from "lucide-react";
+import { Sun, Moon, Space } from "lucide-react";
 import Projects from "./Component/Project";
 import AnimatedFooter from "./Component/Footer";
 gsap.registerPlugin(ScrollTrigger);
-
+import Spacecraftmodel from "./Component/Spacecraftmodel";
 function App() {
   // Education timeline data
   const [darkMode, setDarkMode] = useState(false);
@@ -138,7 +138,11 @@ function App() {
         {darkMode ? <Sun className="w-6 h-6 text-yellow-500" /> : <Moon className="w-6 h-6 text-white-800" />}
       </button>
       </motion.header>
-
+      <div className="">
+                  <Canvas className="bg-transparent">
+                 <Spacecraftmodel/>
+                  </Canvas>
+                </div>
       <main id="home" className= {darkMode ? "bg-black":"bg-white"}      >
         <HeroSection darkMode={darkMode}/>
         <section id="education" className="w-full max-w-7xl mx-auto px-4 py-16">

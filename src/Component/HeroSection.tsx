@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 import { TypingAnimation } from './Typingtextanimation';
 import { InteractiveHoverButton } from "./InteractiveHoverbutton";
 
-function HeroSection({ darkMode,id }: { darkMode: boolean }) {
+function HeroSection({ darkMode,id }: { darkMode: boolean ,id:string}) {
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: { opacity: 1, transition: { duration: 1, staggerChildren: 0.3 } }
