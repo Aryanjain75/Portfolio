@@ -1,0 +1,14 @@
+@import "tailwindcss";
+body{
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+input, textarea {
+    transition: all 0.3s ease;
+  }
+  
+  input:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  }
