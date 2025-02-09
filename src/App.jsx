@@ -117,7 +117,11 @@ function App() {
       href: "https://moviesreviewsystem.netlify.app/",
       description: "An interactive platform for reviewing and rating movies.",
     },
-    
+    {
+      title: "Portfolio",
+      href: "https://aryanjainportfolio.netlify.app/",
+      description: "My personal portfolio website.",
+    }
   ];
 
   return (
