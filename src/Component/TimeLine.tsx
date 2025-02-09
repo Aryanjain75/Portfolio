@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-"use client";
 import {
-  useMotionValueEvent,
   useScroll,
   useTransform,
   motion,
@@ -17,7 +15,6 @@ export const Timeline = ({id, data, darkMode }: {id:string, data: TimelineEntry[
   const ref = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     if (ref.current) {
@@ -25,13 +22,8 @@ export const Timeline = ({id, data, darkMode }: {id:string, data: TimelineEntry[
       setHeight(rect.height);
     }
 
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
 
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    
   }, [ref]);
 
   const { scrollYProgress } = useScroll({
