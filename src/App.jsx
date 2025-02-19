@@ -107,7 +107,7 @@ function App() {
       title: "Sparsha In-house",
       href: "https://sparshainhouse.vercel.app/",
       description: "Customizable Tailwind CSS and Framer Motion Components.",
-      src:"/public/sparshaproject.png",
+      src:"/sparshaproject.png",
       alt:"sparsha in house"
     },
     {
