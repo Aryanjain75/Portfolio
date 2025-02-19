@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -16,10 +14,9 @@ interface ProjectProps {
 interface ProjectsSectionProps {
     id: string;
   projects: ProjectProps[];
-  darkMode: boolean;
 }
 
-function Projects({id, projects, darkMode }: ProjectsSectionProps) {
+function Projects({id, projects }: ProjectsSectionProps) {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (

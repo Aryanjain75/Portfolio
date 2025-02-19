@@ -6,7 +6,7 @@ import { useInView } from "react-intersection-observer";
 import gsap from 'gsap';
 import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
-function Skillset({ id,darkMode }: {id:string, darkMode: boolean }) {
+function Skillset({ id}: {id:string }) {
   // Skills data with categories and colors
       const icons = useRef<HTMLHeadingElement>(null);
       const containerRef = useRef<HTMLDivElement>(null);

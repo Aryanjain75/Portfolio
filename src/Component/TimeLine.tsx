@@ -17,7 +17,7 @@ interface TimelineEntry {
   degree?:string
 }
 import { useInView } from "react-intersection-observer";
-export const Timeline = ({id, data, darkMode }: {id:string, data: TimelineEntry[]; darkMode: boolean }) => {
+export const Timeline = ({id, data }: {id:string, data: TimelineEntry[]; }) => {
   const ref = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);

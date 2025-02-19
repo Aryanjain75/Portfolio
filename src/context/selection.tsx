@@ -1,17 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 
-import { createContext, useState, ReactNode, useContext } from 'react';
+import { createContext, useState, ReactNode} from 'react';
 
 // Define the shape of the context data
 interface ContextData {
-  theme: string;
-  toggleTheme: () => void;
-  
-  user: {
-    name: string;
-    email: string;
-  } | null;
-  isAuthenticated: boolean;
   
   activeTab: string;  // Ensure it's always a string
   setActiveTab: (activeTab: string) => void;  // Never `undefined`
@@ -19,10 +10,7 @@ interface ContextData {
 
 // Create context with strict default values
 export const AppContext = createContext<ContextData>({
-  theme: 'light',
-  toggleTheme: () => {},  // No-op function
-  user: null,
-  isAuthenticated: false,
+  
   activeTab: '',  // Default as empty string
   setActiveTab: () => {} // No-op function to prevent undefined calls
 });
@@ -32,21 +20,12 @@ interface AppProviderProps {
 }
 
 export const AppProvider = ({ children }: AppProviderProps) => {
-  const [theme, setTheme] = useState('light');
-  const [user, setUser] = useState<ContextData['user']>(null);
   const [activeTab, setActiveTab] = useState('');  // Ensure activeTab is always a string
 
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
-  };
-
+  
   return (
     <AppContext.Provider 
       value={{
-        theme,
-        toggleTheme,
-        user,
-        isAuthenticated: !!user,
         activeTab,
         setActiveTab,
       }}

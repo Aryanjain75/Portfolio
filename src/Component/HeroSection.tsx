@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { useRef } from 'react';
 import gsap from 'gsap';
@@ -9,7 +7,7 @@ import { motion } from 'framer-motion';
 import { TypingAnimation } from './Typingtextanimation';
 import { InteractiveHoverButton } from "./InteractiveHoverbutton";
 
-function HeroSection({ darkMode, id }: { darkMode: boolean, id: string }) {
+function HeroSection({  id }: { id: string }) {
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: { opacity: 1, transition: { duration: 1, staggerChildren: 0.3 } }
