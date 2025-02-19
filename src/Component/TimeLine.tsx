@@ -4,7 +4,7 @@ import {
   useTransform,
   motion,
 } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface TimelineEntry {
   timming: string;
@@ -35,7 +35,6 @@ export const Timeline = ({id, data }: {id:string, data: TimelineEntry[]; }) => {
   });
 
   const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
-  const {  inView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
     <div
