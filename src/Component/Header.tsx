@@ -12,7 +12,7 @@ import {
 const menuItems = [
   { icon: <HomeIcon />, label: "Home", id: "home" },
   { icon: <SchoolIcon />, label: "Education", id: "education" },
-  { icon: <WorkSharpIcon />, label: "Education", id: "experience" },
+  { icon: <WorkSharpIcon />, label: "Experience", id: "education" },
   { icon: <BusinessCenterSharpIcon />, label: "Projects", id: "projects" },
   { icon: <CategorySharpIcon />, label: "Skills", id: "skills" },
   { icon: <PersonIcon />, label: "About Me", id: "home" },
@@ -29,7 +29,7 @@ function Header() {
 
   return (
     <motion.div
-      className="bg-gray-600/40 dark:bg-gray-900 rounded-md p-2 w-fit m-auto max-w-[95vw]"
+      className="bg-blue-300/30"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -38,7 +38,7 @@ function Header() {
         {menuItems.map((item, index) => (
           <motion.li
             key={index}
-            className="bg-gray-500 dark:bg-gray-700 rounded-full border-black dark:border-gray-500 border-2 p-1 sm:p-2 m-0.5 sm:m-1 cursor-pointer"
+            className=" p-1 sm:p-2 m-0.5 sm:m-1 cursor-pointer"
             title={item.label}
             whileHover={{ scale: 1.2, rotate: 5 }}
             whileTap={{ scale: 0.9 }}

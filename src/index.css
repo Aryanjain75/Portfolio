@@ -1,8 +1,12 @@
 @import "tailwindcss";
+
+/* ... */
+
 body{
     margin: 0px;
     padding: 0px;
     overflow-x: hidden;
+    background-color: #171f2b;
 }
 input, textarea {
     transition: all 0.3s ease;

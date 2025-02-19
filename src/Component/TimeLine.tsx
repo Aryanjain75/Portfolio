@@ -7,8 +7,14 @@ import {
 import React, { useEffect, useRef, useState } from "react";
 
 interface TimelineEntry {
+  timming: string;
   title: string;
-  content: React.ReactNode;
+  institution: string,
+  location: string,
+  achievement: string,
+  specialization?:string,
+  description:string,
+  degree?:string
 }
 
 export const Timeline = ({id, data, darkMode }: {id:string, data: TimelineEntry[]; darkMode: boolean }) => {
@@ -21,9 +27,6 @@ export const Timeline = ({id, data, darkMode }: {id:string, data: TimelineEntry[
       const rect = ref.current.getBoundingClientRect();
       setHeight(rect.height);
     }
-
-
-    
   }, [ref]);
 
   const { scrollYProgress } = useScroll({
@@ -36,47 +39,65 @@ export const Timeline = ({id, data, darkMode }: {id:string, data: TimelineEntry[
 
   return (
     <div
-    id={id}
-      className={`w-full font-sans px-4 sm:px-6 md:px-10 transition-colors duration-300 ${darkMode ? "bg-gray-900 text-white" : "bg-white text-black"}`}
+      id={id}
+      className="w-full overflow-hidden min-h-screen bg-gradient-to-b from-gray-900 to-black text-white font-sans"
       ref={containerRef}
     >
-      <div className="max-w-7xl mx-auto py-12 sm:py-16 md:py-20 px-4 md:px-8 lg:px-10">
-        <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl mb-4 font-bold">
-          Education & Experience
-        </h2>
-      </div>
+      <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
 
-      <div ref={ref} className="relative max-w-7xl mx-auto pb-12 sm:pb-16 md:pb-20">
-        {data.map((item, index) => (
-          <div
-            key={index}
-            className="flex flex-col md:flex-row justify-start pt-8 sm:pt-10 md:pt-40 md:gap-10"
-          >
-            <div className="sticky flex flex-col md:flex-row z-40 items-center top-20 md:top-40 self-start w-full md:max-w-xs lg:max-w-sm">
-              <div className={`h-8 sm:h-10 absolute left-3 md:left-3 w-8 sm:w-10 rounded-full flex items-center justify-center ${darkMode ? "bg-gray-800" : "bg-white"}`}>
-                <div className={`h-3 sm:h-4 w-3 sm:w-4 rounded-full border p-2 ${darkMode ? "bg-gray-700 border-gray-600" : "bg-neutral-200 border-neutral-300"}`} />
-              </div>
-              <h3 className="hidden md:block text-lg sm:text-xl md:text-3xl lg:text-5xl md:pl-20 font-bold">
-                {item.title}
-              </h3>
-            </div>
-
-            <div className="relative pl-12 sm:pl-16 md:pl-4 pr-4 w-full">
-              <h3 className="md:hidden block text-xl sm:text-2xl mb-3 sm:mb-4 text-left font-bold">
-                {item.title}
-              </h3>
-              <p className="text-sm sm:text-base">{item.content}</p>
-            </div>
-          </div>
-        ))}
-        <div
-          style={{ height: height + "px" }}
-          className="absolute left-4 sm:left-6 md:left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-neutral-200 dark:via-gray-600 to-transparent to-[99%] mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)"
-        >
-          <motion.div
-            style={{ height: heightTransform, opacity: opacityTransform }}
-            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-purple-500 via-blue-500 to-transparent from-[0%] via-[10%] rounded-full"
+        <div className="relative" ref={ref}>
+          <motion.div 
+            className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-blue-400 to-cyan-400 rounded-full"
+            style={{ height: heightTransform }}
           />
+          
+          <div className="space-y-12">
+            {data.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={`flex flex-col md:flex-row items-center gap-8 relative ${
+                  index % 2 === 0 ? 'md:flex-row-reverse' : ''
+                }`}
+              >
+                <div className="w-full md:w-1/2 p-6">
+                  <motion.div 
+                    className={`absolute  md:left-auto transform -translate-x-1/2 md:translate-x-0 w-4 h-4 bg-cyan-400 rounded-full shadow-[0_0_20px_#00c4e8] z-10`}                  />
+                  
+                  <div className="bg-gray-800 rounded-xl p-6 shadow-xl hover:shadow-cyan-400/20 transition-all duration-300">
+                    <div className="flex justify-between items-center text-cyan-400 mb-4">
+                      <span className="text-sm font-semibold">{item.timming}</span>
+                      <span className="text-sm font-medium">{item.achievement}</span>
+                    </div>
+                    
+                    <h3 className="text-2xl font-bold mb-4 text-gradient bg-gradient-to-r from-blue-400 to-cyan-400 text-transparent bg-clip-text">
+                      {item.title}
+                    </h3>
+                    
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
+                        <span className="text-gray-300">{item.institution}</span>
+                      </div>
+                      
+                      {(item.specialization || item.degree) && (
+                        <div className="flex items-center gap-3">
+                          <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
+                          <span className="text-gray-300">{item.specialization || item.degree}</span>
+                        </div>
+                      )}
+                      
+                      <p className="text-gray-400 leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

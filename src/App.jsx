@@ -13,6 +13,13 @@ import  ContactUs  from "./Component/ContactUs";
 import { Sun, Moon, Space } from "lucide-react";
 import Projects from "./Component/Project";
 import AnimatedFooter from "./Component/Footer";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "./Component/ui/tabs";
+ 
 gsap.registerPlugin(ScrollTrigger);
 function App() {
   // Education timeline data
@@ -24,53 +31,42 @@ function App() {
       document.documentElement.classList.remove("dark");
     }
   }, [darkMode]);
+
   const educationData = [,{
-      title: "Gradious Technology Training (2024 - ongoing)",
+      timming: "2024 - ongoing",
+      title: "Gradious Technology Training ",
       institution: "Gradious Technology",
       location: "Remote",
-      specialization: "Full Stack Development",
+      specialization: "Full Stack Development", 
       achievement: "Completed Training",
-      details: "Completed Full Stack Development training with hands-on experience in MERN stack",
+      description: "Intensive training program focused on modern web development technologies including MongoDB, Express.js, React.js and Node.js"
   },
     {
-      title: "Graduation (2021 - ongoing)",
+      timming: "2021 - 2025",
+      title: "Graduation",
       institution: "Walchand Institute of Technology",
       degree: "Bachelor's in Computer Science",
       achievement: "CGPA: 8.9",
-      details: "Completed Bachelor's degree with honors",
+      description: "Four year undergraduate program covering core computer science concepts, data structures, algorithms, and software engineering principles"
     },
     {
-      title: " InterCollege (2019 - 2021)",
+      timming:"2019 - 2021", 
+      title: " InterCollege ",
       institution: "St. Thomas Sr. Sec School",
       location: "Mainpuri, Uttar Pradesh",
       specialization: "PCM",
-      achievement: "Percentage: 78%",
+    "achievement":"78%",
+      description: "Higher secondary education with focus on Physics, Chemistry and Mathematics, building strong analytical and problem-solving skills"
     },
     {
-      title: "High School (2018-2019)",
-      institution: "St. Thomas Sr. Sec School",
+      timming: "2018 - 2019",
+      title: "High School",
+      institution: "St. Thomas Sr. Sec School", 
       location: "Mainpuri, Uttar Pradesh",
-      achievement: "Percentage: 71%",
+      "achievement":"71%",
+      description: "Completed secondary education with strong foundation in science and mathematics"
     },
-  ].map((item) => ({
-    title: item.title,
-    content: (
-      <div className="space-y-4">
-        <p className={`${darkMode?"text-white":"text-black"} text-black text-sm md:text-base font-medium`}>
-          {item.institution}
-          {item.location && (
-            <span className={`block ${darkMode?"text-wheat-600":"text-gray-600"} text-xs`}>{item.location}</span>
-          )}
-        </p>
-        {item.degree && <p className={`${darkMode?"text-wheat-800":"text-gray-800"} text-sm`}>{item.degree}</p>}
-        {item.specialization && (
-          <p className={`${darkMode?"text-wheat-800":"text-gray-800"} text-sm`}>Specialization: {item.specialization}</p>
-        )}
-        <p className="text-blue-600 font-semibold">{item.achievement}</p>
-        {item.details && <p className={`${darkMode?"text-wheat-700":"text-gray-700"}  text-sm`}>{item.details}</p>}
-      </div>
-    ),
-  }));
+  ];
 
   const projectHeading = useRef(null);
   const projectitems= useRef(null);
@@ -133,21 +129,33 @@ function App() {
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <Header />
-        <button
-        onClick={() => setDarkMode(!darkMode)}
-        className="p-2 bg-gray-200 dark:bg-gray-800 rounded-full shadow-md transition-all"
-      >
-        {darkMode ? <Sun className="w-6 h-6 text-yellow-500" /> : <Moon className="w-6 h-6 text-white-800" />}
-      </button>
+        
       </motion.header>
    
-      <main id="home" className= {darkMode ? "bg-black":"bg-white"}      >
+      <main id="home" className= "bg-[#171f2b]"      >
         <HeroSection darkMode={darkMode}/>
-        <section id="education" className="w-full max-w-7xl mx-auto px-4 py-16">
-          <Timeline data={educationData} darkMode={darkMode} />
-        </section>
-        <Skillset id="skills" darkMode={darkMode}/>
-        <Projects id="projects" darkMode={darkMode} projects={projects} />
+        <Tabs defaultValue="Projects" className="">
+        <TabsList className="grid w-[80%] h-auto m-auto lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 text-white border-1 border-white">
+        <TabsTrigger value="Projects">Projects</TabsTrigger>
+        <TabsTrigger value="Skills">Skills</TabsTrigger>
+        <TabsTrigger value="Education">Education</TabsTrigger>
+      </TabsList>
+      <TabsContent value="Education">
+      <section id="education" className="w-full max-w-7xl mx-auto px-4 py-16">
+      <Timeline data={educationData} darkMode={darkMode} />
+      </section>
+      </TabsContent>
+      <TabsContent value="Skills">
+      <section id="Skills" className="w-full max-w-7xl mx-auto px-4 py-16">
+      <Skillset id="skills" darkMode={darkMode}/>
+      </section>
+      </TabsContent>
+      <TabsContent value="Projects">
+      <Projects id="projects" darkMode={darkMode} projects={projects} />
+      </TabsContent>
+      
+        </Tabs>
+       
         <ContactUs id="contact" darkMode={darkMode}/>
         <AnimatedFooter  darkMode={darkMode}/>
       </main>

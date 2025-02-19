@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function Spacecraftmodel() {
   return (
-    <><PerspectiveCamera  fov={45} near={0.1} far={1000} position={[-3, 2, 4]} /><Environment preset="city" /><Suspense fallback={null}>
+    <><PerspectiveCamera makeDefault fov={45} near={0.1} far={1000} position={[-3, 2, 4]} /><Environment preset="city" /><Suspense fallback={null}>
       <Model />
       <OrbitControls />
     </Suspense></>

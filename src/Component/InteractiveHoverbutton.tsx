@@ -17,18 +17,17 @@ export const InteractiveHoverButton = React.forwardRef<
     <button
       ref={ref}
       className={cn(
-        "group relative w-fit cursor-pointer overflow-hidden rounded-full border bg-background p-1.5 px-4 text-center  font-semibold",
+        "group relative w-fit cursor-pointer overflow-hidden rounded-full border bg-background p-1.5 px-4 text-center  font-semibold hover:bg-[#00c4e8] hover:shadow-[0_0_35px_#00c4e8]",
         className,
       )}
       {...props}
     >
       <div className="flex items-center gap-2">
-        <div className="h-1.5 w-1.5 rounded-full bg-transparent transition-all duration-300 group-hover:scale-[100.8]"></div>
         <span className=" transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0 flex flex-row gap-2">
           {children}
         </span>
       </div>
-      <div className="absolute top-0 z-10 h-full w-full translate-x-12 items-center justify-center gap-2 opacity-0 transition-all duration-300 group-hover:-translate-x-5 group-hover:opacity-100 flex flex-row">
+      <div className="absolute bg-[#00c4e8] top-0 z-10 h-full w-full translate-x-12 items-center justify-center gap-2 opacity-0 transition-all duration-300 group-hover:-translate-x-5 group-hover:opacity-100 flex flex-row">
         <a href={href} className="flex items-center gap-2">
         <span className="flex flex-row gap-2">{children}</span>
         <ArrowRight size={16} />
