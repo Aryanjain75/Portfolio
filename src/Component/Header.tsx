@@ -29,7 +29,7 @@ function Header() {
 
   return (
     <motion.div
-      className="bg-blue-300/30"
+      className="bg-blue-300/30 relative z-50"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}

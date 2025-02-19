@@ -16,7 +16,7 @@ interface TimelineEntry {
   description:string,
   degree?:string
 }
-
+import { useInView } from "react-intersection-observer";
 export const Timeline = ({id, data, darkMode }: {id:string, data: TimelineEntry[]; darkMode: boolean }) => {
   const ref = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -35,15 +35,23 @@ export const Timeline = ({id, data, darkMode }: {id:string, data: TimelineEntry[
   });
 
   const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
-  const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
+  const {  inView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
     <div
       id={id}
-      className="w-full overflow-hidden min-h-screen bg-gradient-to-b from-gray-900 to-black text-white font-sans"
+      className="w-full overflow-hidden min-h-screen text-white font-sans"
       ref={containerRef}
     >
       <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+      <motion.h1
+        className={`text-5xl md:text-7xl font-bold text-center mb-12 text-white`}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 } }
+        transition={{ duration: 0.6 }}
+      >
+        Education & skills
+      </motion.h1>
 
         <div className="relative" ref={ref}>
           <motion.div 

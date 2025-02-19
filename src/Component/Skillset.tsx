@@ -21,10 +21,10 @@ function Skillset({ id,darkMode }: {id:string, darkMode: boolean }) {
             opacity: 0
           });
           gsap.set(containerRef.current,{
-            opacity:0
+            scale:1
           })
           gsap.set(titleRef.current, {
-            scale:0,
+            y: -50,
             opacity: 0
           });
 
@@ -32,8 +32,6 @@ function Skillset({ id,darkMode }: {id:string, darkMode: boolean }) {
           gsap.to(titleRef.current, {
             y: 0,
             opacity: 1,
-            scale:1,
-            delay:0.6,
             duration: 1,
             ease: "back.out"
           });
@@ -139,7 +137,7 @@ function Skillset({ id,darkMode }: {id:string, darkMode: boolean }) {
     <section
       ref={ref}
       id={id}
-      className={`px-6 py-16 transition-colors duration-300 bg-[#051123]`}
+      className={`px-6 py-16 transition-colors duration-300`}
     >
       <motion.h1
         ref={titleRef}

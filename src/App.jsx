@@ -107,16 +107,29 @@ function App() {
       title: "Sparsha In-house",
       href: "https://sparshainhouse.vercel.app/",
       description: "Customizable Tailwind CSS and Framer Motion Components.",
+      src:"/public/sparshaproject.png",
+      alt:"sparsha in house"
     },
     {
       title: "Movie Review Project",
       href: "https://moviesreviewsystem.netlify.app/",
       description: "An interactive platform for reviewing and rating movies.",
+      src:"/Movie-review-system.png",
+      alt:"Movie review System"
     },
     {
       title: "Portfolio",
       href: "https://aryanjainportfolio.netlify.app/",
       description: "My personal portfolio website.",
+      src:"/Portfolio.png",
+      alt:"Portfolio"
+    },
+    {
+      title: "Banking application",
+      href: "https://github.com/Aryanjain75/Banking-app",
+      description: "A full-stack banking application with features for account management, transactions, and secure user authentication",
+      src:"/Bankingapplication.png", 
+      alt:"Banking application"
     }
   ];
 
@@ -156,8 +169,8 @@ function App() {
       
         </Tabs>
        
-        <ContactUs id="contact" darkMode={darkMode}/>
-        <AnimatedFooter  darkMode={darkMode}/>
+        <ContactUs id="contact" darkMode={true}/>
+        <AnimatedFooter  darkMode={true}/>
       </main>
     </div>
   );

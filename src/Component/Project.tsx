@@ -8,7 +8,9 @@ import { PinContainer } from "./Pincard";
 interface ProjectProps {
   title: string;
   description: string;
-  href: string;
+  src: string;
+  href:string;
+  alt:string;
 }
 
 interface ProjectsSectionProps {
@@ -25,14 +27,10 @@ function Projects({id, projects, darkMode }: ProjectsSectionProps) {
       ref={ref}
       id={id}
 
-      className={`px-6 py-16 transition-colors duration-300 ${
-        darkMode ? "bg-gradient-to-r from-gray-900 to-black" : "bg-white"
-      }`}
+      className={`px-6 py-16 transition-colors duration-300 `}
     >
       <motion.h1
-        className={`text-5xl md:text-7xl font-bold text-center mb-12 ${
-          darkMode ? "text-white" : "text-black"
-        }`}
+        className={`text-5xl md:text-7xl font-bold text-center mb-12 text-white`}
         initial={{ opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
@@ -51,10 +49,11 @@ function Projects({id, projects, darkMode }: ProjectsSectionProps) {
                     <span className="text-slate-500">{project.description}</span>
                   </div>
                   <div className="flex flex-1 w-full rounded-lg overflow-hidden mt-4 border-0">
-                    <iframe
-                      src={project.href}
+                    <img
+                      src={project.src}
+                      alt={project.alt}
                       className="w-full h-full border-0 rounded-lg"
-                    ></iframe>
+                    ></img>
                   </div>
                 </div>
               </PinContainer>
